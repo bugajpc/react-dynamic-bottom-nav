@@ -1,0 +1,86 @@
+.menu-desktop {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translate(-50%);
+    background-color: var(--background-color);
+    padding: var(--nav-padding);
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    z-index: 5;
+    overflow: hidden;
+    display: flex; /* Ensure items are centered */
+    justify-content: center; /* Center items horizontally */
+    align-items: center; /* Center items vertically */
+    max-width: 90%; /* Prevent the nav from exceeding the screen width */
+    flex-wrap: wrap; /* Allow items to wrap to the next line if needed */
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.menu-desktop.hidden {
+    transform: translate(-50%, 100%); /* Move the nav out of view */
+    opacity: 0; /* Hide the nav */
+}
+
+.menu-desktop.visible {
+    transform: translate(-50%, 0); /* Keep the nav in view */
+    opacity: 1; /* Show the nav */
+}
+
+.menu-highlight {
+    position: absolute;
+    top: 0;
+    left: 0;
+    background-color: var(--highlight-color);
+    border-radius: var(--border-radius);
+    z-index: 0; /* Ensure the highlight stays below all text */
+    transition: all 0.3s ease;
+    box-sizing: border-box; /* Ensure padding or borders don't affect size */
+}
+
+.menu-desktop-items {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    gap: var(--item-gap);
+    position: relative;
+    z-index: 1;
+    justify-content: center; /* Center items horizontally */
+    flex-wrap: wrap; /* Allow items to wrap to the next line if needed */
+    overflow: hidden; /* Prevent items from overflowing the container */
+}
+
+.menu-desktop-item-link {
+    display: block;
+    padding: 8px 16px;
+    text-decoration: none;
+    transition: color 0.2s ease;
+    white-space: nowrap; /* Prevent text from breaking into multiple lines */
+    font-size: var(--font-size); /* Keep text size consistent */
+    color: var(--text-color-primary); /* Default text color */
+}
+
+.menu-desktop-item-link:hover {
+    color: var(--text-color-secondary); /* Change text color on hover */
+}
+
+/* Responsive styles for mobile screens */
+@media (max-width: 768px) {
+    .menu-desktop {
+        width: 85%; /* Make the nav slightly wider on mobile screens */
+        padding: var(--nav-padding-mobile); /* Add more padding for better spacing */
+    }
+
+    .menu-desktop-items {
+        gap: var(--item-gap-mobile); /* Increase gap between items for better spacing */
+    }
+
+    .menu-highlight {
+        border-radius: var(--border-radius); /* Keep the same border radius for consistency */
+    }
+
+    .menu-desktop-item-link {
+        font-size: var(--font-size-mobile); /* Keep text size consistent on smaller screens */
+    }
+}
